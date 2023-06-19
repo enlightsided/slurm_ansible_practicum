@@ -34,3 +34,21 @@
 **Практические рекомендации:**
 
  -   Для выполнения задания достаточно одной виртуальной машины. Запустите все службы (приложение, Nginx и PostgreSQL) на ней.
+
+## Проверка работоспособности:
+
+Тестирование конфигурации проводилось на:
+
+ - OS: Windows 11 x64 Pro
+ - Окружение: 
+	 - Vagrant 2.3.6
+	 - VirtualBox 6.1.44
+
+## Запуск:
+
+ 1. Создайте ключи для подключения по ssh командой `ssh-keygen`, назовите `newkey`
+ 2. Склонируйте репозиторий: `git clone https://github.com/enlightsided/slurm_ansible_practicum.git`
+ 3. Перейдите в папку репозитория: `cd ./slurm_ansible_practicum`
+ 4. Запустите виртуальные машины:`vagrant up` (при первом запуске понадобится выполнить команду `vagrant init` в исходной папке, не забудьте подменить автоматически сгенерированный файл `Vagrantfile` на файл из репозитория
+ 5. После успешной отработки скриптов запуска виртуальных машин подключаемся на контрольную ноду командой: `vagrant ssh controlnode`
+ 6. Запускаем наш плейбук: `ansible-playbook playbook.yml -e "gitlabuser=<your_user_for_xpaste_repo>" -e "gitlabpassword=<your_password_for_xpaste_repo>" -e "xpaste_secret_key=<your_secret_key>" -e "xpaste_db_password=<your_db_pass>"`
